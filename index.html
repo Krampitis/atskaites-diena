@@ -46,6 +46,7 @@ body {
 .kicker {
   font-size: 11px;
   letter-spacing: 5px;
+  text-indent: 5px;
   text-transform: uppercase;
   color: var(--muted);
   margin-bottom: 44px;
@@ -53,14 +54,16 @@ body {
 
 .days {
   font-weight: 500;
-  font-size: clamp(64px, 18vw, 140px);
+  font-size: clamp(40px, 12vw, 88px);
   line-height: 1;
   letter-spacing: -0.01em;
+  text-indent: -0.01em;
 }
 
 .days-label {
   font-size: 13px;
   letter-spacing: 3px;
+  text-indent: 3px;
   text-transform: uppercase;
   color: var(--muted);
   margin-top: 16px;
@@ -70,6 +73,7 @@ body {
   font-weight: 400;
   font-size: clamp(18px, 4.5vw, 26px);
   letter-spacing: 3px;
+  text-indent: 3px;
   color: var(--ink);
   margin-top: 30px;
 }
@@ -83,21 +87,22 @@ hr {
 }
 
 .units {
-  display: flex;
-  justify-content: center;
-  gap: clamp(28px, 7vw, 56px);
-  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  max-width: 420px;
+  margin: 40px auto 0;
 }
 .unit b {
   display: block;
   font-weight: 500;
-  font-size: clamp(20px, 5vw, 28px);
+  font-size: clamp(32px, 8vw, 46px);
 }
 .unit span {
   display: block;
   margin-top: 8px;
-  font-size: 11px;
+  font-size: 14px;
   letter-spacing: 2px;
+  text-indent: 2px;
   text-transform: uppercase;
   color: var(--muted);
 }
@@ -107,6 +112,7 @@ hr {
   font-size: 12px;
   color: var(--muted);
   letter-spacing: 1px;
+  text-indent: 1px;
 }
 .start b {
   font-weight: 400;
@@ -140,7 +146,7 @@ hr {
 
 <script>
 /* ------- iestatījumi ------- */
-const START = new Date('2026-07-07T00:00:00');
+const START = new Date('2026-07-09T00:00:00');
 const LABEL = 'Atskaites diena';
 /* --------------------------- */
 

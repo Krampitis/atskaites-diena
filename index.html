@@ -49,7 +49,7 @@ body {
   text-indent: 5px;
   text-transform: uppercase;
   color: var(--muted);
-  margin-bottom: 44px;
+  margin-bottom: 32px;
 }
 
 .days {
@@ -66,7 +66,7 @@ body {
   text-indent: 3px;
   text-transform: uppercase;
   color: var(--muted);
-  margin-top: 16px;
+  margin-top: 12px;
 }
 
 .clock {
@@ -75,7 +75,7 @@ body {
   letter-spacing: 3px;
   text-indent: 3px;
   color: var(--ink);
-  margin-top: 30px;
+  margin-top: 22px;
 }
 .clock .sec { color: var(--accent); }
 
@@ -83,14 +83,14 @@ hr {
   border: none;
   border-top: 1px solid var(--ink);
   width: 64px;
-  margin: 48px auto 0;
+  margin: 36px auto 0;
 }
 
 .units {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   max-width: 420px;
-  margin: 40px auto 0;
+  margin: 30px auto 0;
 }
 .unit b {
   display: block;
@@ -108,7 +108,7 @@ hr {
 }
 
 .start {
-  margin-top: 48px;
+  margin-top: 36px;
   font-size: 12px;
   color: var(--muted);
   letter-spacing: 1px;
@@ -134,72 +134,4 @@ hr {
 
   <hr>
 
-  <div class="units" id="units">
-    <div class="unit"><b id="u-weeks">0</b><span id="l-weeks">nedēļas</span></div>
-    <div class="unit"><b id="u-months">0</b><span id="l-months">mēneši</span></div>
-    <div class="unit"><b id="u-years">0</b><span id="l-years">gadi</span></div>
-  </div>
-
-  <div class="start">sākums <b id="start-date"></b></div>
-
-</div>
-
-<script>
-/* ------- iestatījumi ------- */
-const START = new Date('2026-07-09T00:00:00');
-const LABEL = 'Atskaites diena';
-/* --------------------------- */
-
-const $ = id => document.getElementById(id);
-$('kicker').textContent = LABEL;
-
-function pluralLV(n, one, many) {
-  return (n % 10 === 1 && n % 100 !== 11) ? one : many;
-}
-
-function pad(n) { return String(n).padStart(2, '0'); }
-
-function fmtDate(d) {
-  return pad(d.getDate()) + '.' + pad(d.getMonth() + 1) + '.' + d.getFullYear() + '.';
-}
-
-function calendarMonths(from, to) {
-  let m = (to.getFullYear() - from.getFullYear()) * 12 + (to.getMonth() - from.getMonth());
-  const probe = new Date(from);
-  probe.setMonth(from.getMonth() + m);
-  if (probe > to) m--;
-  return Math.max(0, m);
-}
-
-$('start-date').textContent = fmtDate(START);
-
-function update() {
-  const now = new Date();
-  const diff = Math.max(0, now - START);
-
-  const days = Math.floor(diff / 86400000);
-  const h = Math.floor(diff / 3600000) % 24;
-  const min = Math.floor(diff / 60000) % 60;
-  const s = Math.floor(diff / 1000) % 60;
-
-  $('days').textContent = days;
-  $('days-label').textContent = pluralLV(days, 'diena', 'dienas');
-  $('clock').innerHTML = pad(h) + ':' + pad(min) + ':<span class="sec">' + pad(s) + '</span>';
-
-  const weeks = Math.floor(days / 7);
-  const months = calendarMonths(START, now);
-  const years = Math.floor(months / 12);
-
-  $('u-weeks').textContent = weeks;
-  $('l-weeks').textContent = pluralLV(weeks, 'nedēļa', 'nedēļas');
-  $('u-months').textContent = months;
-  $('l-months').textContent = pluralLV(months, 'mēnesis', 'mēneši');
-  $('u-years').textContent = years;
-  $('l-years').textContent = pluralLV(years, 'gads', 'gadi');
-}
-
-update();
-setInterval(update, 250);
-</script>
-</body>
-</html>
+  <div class="units" id="unit

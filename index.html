@@ -16,11 +16,15 @@
 <meta name="twitter:title" content="Atskaites diena">
 <meta name="twitter:description" content="Cik ilgi es jau turos? Skaitītājs tikšķ tieši tagad.">
 <meta name="twitter:image" content="https://krampitis.github.io/atskaites-diena/preview.png">
+<meta name="theme-color" content="#f6f2e9">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='30' fill='%23b5402f'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
+
+::selection { background: #b5402f; color: #f6f2e9; }
 
 :root {
   --paper: #f6f2e9;
@@ -29,8 +33,12 @@
   --accent: #b5402f;
 }
 
+html { -webkit-text-size-adjust: 100%; }
+
 body {
   background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   color: var(--ink);
   min-height: 100vh;
   display: flex;
@@ -44,7 +52,7 @@ body {
 .sheet { text-align: center; width: 100%; max-width: 720px; }
 
 .kicker {
-  font-size: 17px;
+  font-size: 13px;
   letter-spacing: 5px;
   text-indent: 5px;
   text-transform: uppercase;
@@ -184,6 +192,7 @@ function update() {
 
   $('days').textContent = days;
   $('days-label').textContent = pluralLV(days, 'diena', 'dienas');
+  document.title = days + ' ' + pluralLV(days, 'diena', 'dienas') + ' · Atskaites diena';
   $('clock').innerHTML = pad(h) + ':' + pad(min) + ':<span class="sec">' + pad(s) + '</span>';
 
   const weeks = Math.floor(days / 7);

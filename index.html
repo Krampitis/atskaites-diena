@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Atskaites diena</title>
 <meta name="description" content="Cik ilgi es jau turos? Skaitītājs tikšķ tieši tagad.">
+<meta name="theme-color" content="#f6f2e9">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://krampitis.github.io/atskaites-diena/">
 <meta property="og:title" content="Atskaites diena">
@@ -16,146 +17,159 @@
 <meta name="twitter:title" content="Atskaites diena">
 <meta name="twitter:description" content="Cik ilgi es jau turos? Skaitītājs tikšķ tieši tagad.">
 <meta name="twitter:image" content="https://krampitis.github.io/atskaites-diena/preview.png">
-<meta name="theme-color" content="#f6f2e9">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='30' fill='%23b5402f'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23f6f2e9'/%3E%3Ccircle cx='32' cy='32' r='10' fill='%23b5402f'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
-::selection { background: var(--accent); color: var(--paper); }
-
 :root {
   --paper: #f6f2e9;
   --ink: #16130d;
-  --muted: #8a8474;
-  --accent: #b5402f;
+  --mute: #8a8474;
+  --rust: #b5402f;
+  --hairline: rgba(22, 19, 13, .14);
 }
 
-html { -webkit-text-size-adjust: 100%; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+::selection { background: var(--rust); color: var(--paper); }
 
 body {
   background: var(--paper);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   color: var(--ink);
   min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 24px;
   font-family: 'Inter', system-ui, sans-serif;
-  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-.sheet { text-align: center; width: 100%; max-width: 720px; }
+.sheet {
+  text-align: center;
+  width: 100%;
+  max-width: 720px;
+  animation: rise .7s cubic-bezier(.22,.9,.3,1) both;
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
 
 .kicker {
-  font-size: 13px;
+  font-size: 11px;
+  font-weight: 500;
   letter-spacing: 5px;
-  text-indent: 5px;
+  margin-right: -5px;
   text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 32px;
+  color: var(--mute);
+  margin-bottom: 48px;
 }
 
 .days {
   font-weight: 500;
-  font-size: clamp(36px, 10vw, 72px);
+  font-size: clamp(32px, 9vw, 68px);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
   line-height: 1;
-  letter-spacing: -0.01em;
-  text-indent: -0.01em;
 }
 
 .days-label {
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: 3px;
-  text-indent: 3px;
+  margin-right: -3px;
   text-transform: uppercase;
-  color: var(--muted);
-  margin-top: 12px;
+  color: var(--mute);
+  margin-top: 14px;
 }
 
 hr {
   border: none;
   border-top: 1px solid var(--ink);
   width: 64px;
-  margin: 40px auto 0;
+  margin: 48px auto 22px;
 }
 
-.units {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  max-width: 420px;
-  margin: 30px auto 0;
+.foot {
+  font-size: 13px;
+  color: var(--mute);
 }
-.unit b {
-  display: block;
-  font-weight: 500;
-  font-size: clamp(28px, 7vw, 40px);
-  line-height: 1;
-  letter-spacing: -0.01em;
-  text-indent: -0.01em;
-}
-.unit span {
-  display: block;
-  margin-top: 8px;
-  font-size: 11px;
-  letter-spacing: 2px;
-  text-indent: 2px;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-.start {
-  margin-top: 36px;
-  font-size: 12px;
-  color: var(--muted);
-  letter-spacing: 1px;
-  text-indent: 1px;
-}
-.start b {
-  font-weight: 400;
+.foot b {
+  font-weight: 600;
   color: var(--ink);
-  letter-spacing: 1px;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
 }
-.start b::before {
+
+.cycle {
+  width: 160px;
+  height: 1px;
+  background: var(--hairline);
+  margin: 22px auto 0;
+  position: relative;
+  overflow: hidden;
+}
+.cycle i {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0;
+  background: var(--rust);
+  transition: width 1s linear;
+}
+
+.since {
+  font-size: 11px;
+  color: var(--mute);
+  letter-spacing: .4px;
+  margin-top: 22px;
+  font-variant-numeric: tabular-nums;
+}
+.since b {
+  font-weight: 500;
+  color: var(--ink);
+}
+.since b::before {
   content: '';
   display: inline-block;
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: var(--accent);
-  margin-right: 9px;
-  vertical-align: 2px;
+  background: var(--rust);
+  margin-right: 8px;
+  vertical-align: 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sheet { animation: none; }
+  .cycle i { transition: none; }
 }
 </style>
 <script data-goatcounter="https://pi314159.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
-<div class="sheet">
+<main class="sheet">
 
-  <div class="kicker" id="kicker"></div>
+  <h1 class="kicker" id="kicker"></h1>
 
   <div class="days" id="days">0</div>
   <div class="days-label" id="days-label">dienas</div>
 
   <hr>
 
-  <div class="units" id="units">
-    <div class="unit"><b id="u-weeks">0</b><span id="l-weeks">nedēļas</span></div>
-    <div class="unit"><b id="u-months">0</b><span id="l-months">mēneši</span></div>
-    <div class="unit"><b id="u-years">0</b><span id="l-years">gadi</span></div>
-  </div>
+  <p class="foot" id="readable"></p>
 
-  <div class="start"><b id="start-date"></b></div>
+  <div class="cycle" role="presentation" id="cycle-cont"><i id="cycle-fill"></i></div>
 
-</div>
+  <p class="since"><b id="start-date"></b></p>
+
+</main>
 
 <script>
 /* ------- iestatījumi ------- */
-const START = new Date('2026-08-25T00:00:00');
+const START = new Date('2026-09-05T00:00:00');
 const LABEL = 'Atskaites diena';
 /* --------------------------- */
 
@@ -166,42 +180,82 @@ function pluralLV(n, one, many) {
   return (n % 10 === 1 && n % 100 !== 11) ? one : many;
 }
 
-function pad(n) { return String(n).padStart(2, '0'); }
+const MONTHS_GEN = ['janvāra','februāra','marta','aprīļa','maija','jūnija',
+                     'jūlija','augusta','septembra','oktobra','novembra','decembra'];
 
 function fmtDate(d) {
-  return pad(d.getDate()) + '.' + pad(d.getMonth() + 1) + '.' + d.getFullYear() + '.';
+  return 'no ' + d.getFullYear() + '. gada ' + d.getDate() + '. ' + MONTHS_GEN[d.getMonth()];
+}
+
+/* Pievieno mēnešus datumam, saudzīgi apstrādājot mēnešus ar mazāku dienu skaitu */
+function addMonthsClamped(date, months) {
+  const idx = date.getMonth() + months;
+  const y = date.getFullYear() + Math.floor(idx / 12);
+  const m = ((idx % 12) + 12) % 12;
+  const daysInTarget = new Date(y, m + 1, 0).getDate();
+  const day = Math.min(date.getDate(), daysInTarget);
+  return new Date(y, m, day, date.getHours(), date.getMinutes(), date.getSeconds());
 }
 
 function calendarMonths(from, to) {
   let m = (to.getFullYear() - from.getFullYear()) * 12 + (to.getMonth() - from.getMonth());
-  const probe = new Date(from);
-  probe.setMonth(from.getMonth() + m);
-  if (probe > to) m--;
+  if (addMonthsClamped(from, m) > to) m--;
   return Math.max(0, m);
+}
+
+/* Dienu starpība pēc kalendāra datumiem, nevis milisekundēm,
+   lai vasaras/ziemas laika pāreja neizkropļo skaitu */
+function calendarDays(from, to) {
+  const a = Date.UTC(from.getFullYear(), from.getMonth(), from.getDate());
+  const b = Date.UTC(to.getFullYear(), to.getMonth(), to.getDate());
+  return Math.round((b - a) / 86400000);
 }
 
 $('start-date').textContent = fmtDate(START);
 
 function update() {
   const now = new Date();
-  const diff = Math.max(0, now - START);
 
-  const days = Math.floor(diff / 86400000);
+  if (now < START) {
+    $('days').textContent = '0';
+    $('readable').style.display = 'none';
+    $('cycle-cont').style.display = 'none';
+    return;
+  }
 
-  $('days').textContent = days;
-  $('days-label').textContent = pluralLV(days, 'diena', 'dienas');
-  document.title = days + ' ' + pluralLV(days, 'diena', 'dienas') + ' · Atskaites diena';
+  const totalDays = calendarDays(START, now);
+  $('days').textContent = totalDays;
+  $('days-label').textContent = pluralLV(totalDays, 'diena', 'dienas');
+  document.title = totalDays + ' ' + pluralLV(totalDays, 'diena', 'dienas') + ' · Atskaites diena';
 
-  const weeks = Math.floor(days / 7);
-  const months = calendarMonths(START, now);
-  const years = Math.floor(months / 12);
+  const monthsTotal = calendarMonths(START, now);
+  const years = Math.floor(monthsTotal / 12);
+  const months = monthsTotal % 12;
 
-  $('u-weeks').textContent = weeks;
-  $('l-weeks').textContent = pluralLV(weeks, 'nedēļa', 'nedēļas');
-  $('u-months').textContent = months;
-  $('l-months').textContent = pluralLV(months, 'mēnesis', 'mēneši');
-  $('u-years').textContent = years;
-  $('l-years').textContent = pluralLV(years, 'gads', 'gadi');
+  /* Pilnais nogājušais periods, ligzdots: gadi, mēneši, dienas.
+     Rāda tikai tad, kad ir pagājis vismaz mēnesis, citādi dublētu hero skaitli. */
+  const monthAnchor = addMonthsClamped(START, monthsTotal);
+  const daysRem = calendarDays(monthAnchor, now);
+
+  const parts = [];
+  if (years > 0) parts.push('<b>' + years + '</b> ' + pluralLV(years, 'gads', 'gadi'));
+  if (months > 0) parts.push('<b>' + months + '</b> ' + pluralLV(months, 'mēnesis', 'mēneši'));
+
+  if (parts.length === 0) {
+    $('readable').style.display = 'none';
+  } else {
+    parts.push('<b>' + daysRem + '</b> ' + pluralLV(daysRem, 'diena', 'dienas'));
+    $('readable').innerHTML = parts.slice(0, -1).join(', ') + ' un ' + parts[parts.length - 1];
+    $('readable').style.display = '';
+  }
+
+  /* Sarkanā josla vienmēr atspoguļo gada ciklu: no pēdējās gadadienas
+     līdz nākamajai, arī pirmajā gadā (kur "pēdējā gadadiena" ir pats sākums). */
+  const cycleStart = addMonthsClamped(START, years * 12);
+  const cycleEnd = addMonthsClamped(START, (years + 1) * 12);
+  const pct = Math.min(100, Math.max(0, (now - cycleStart) / (cycleEnd - cycleStart) * 100));
+  $('cycle-fill').style.width = pct.toFixed(4) + '%';
+  $('cycle-cont').style.display = '';
 }
 
 update();
